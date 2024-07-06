@@ -1,0 +1,20 @@
+class Solution {
+    public int passThePillow(int n, int time) {
+        // n=4 time=4
+        // 1 2 3 4........n
+        if(n>time) return (1+time);
+
+        int key = n-1;//3
+        
+        int rem = (time)%(key);//1
+        int res = time / key;//1
+        if(res%2!=0){
+            return n-rem;
+        }else{
+            return 1+rem;
+        }
+
+
+
+        
+    }
