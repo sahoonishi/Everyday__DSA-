@@ -1,0 +1,29 @@
+class Solution {
+    public double averageWaitingTime(int[][] customers) {
+          int first = customers[0][1];
+        if(customers.length==1) return first;
+
+        double totalwait = customers[0][1];//   6
+        double foodone = customers[0][0] + customers[0][1];//  
+
+        for(int i=1;i<customers.length;i++){
+            if(customers[i][0]<=foodone){
+             totalwait =totalwait + foodone + customers[i][1]-customers[i][0];
+             foodone = foodone + customers[i][1];
+            }
+            else{
+                totalwait =totalwait + foodone + customers[i][1]-customers[i][0]+(customers[i][0] - foodone);
+                foodone = foodone + customers[i][1]+(customers[i][0] - foodone);
+            }
+
+        }  
+
+        return totalwait/customers.length;
+
+
+
+
+      
+        
+    }
+}
