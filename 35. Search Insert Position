@@ -1,0 +1,57 @@
+// =================================================================================================================================================
+          THIS IS BRUTE FORCE APPROACH , RUNTIME O(N), SPACE O(1) 
+//==================================================================================================================================================
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int length = nums.length;
+        int index=0;
+        for(int i=0;i<length;i++){
+            if(target==nums[i]){
+                index= i;
+                return index;
+            }
+             else if(target-nums[i]<0){
+                index= i;
+                return index;
+            }
+            else if(target-nums[i]>0){
+                index= i+1;
+            }
+        }
+        return index;
+    }
+}
+
+
+
+
+
+//=====================================================================================
+       THIS IS SOLVED IN BINARY SEARCH METHOD , RUN O(LOGN) , SPACE O(1)
+//=======================================================================================
+
+// OPTIMIZED O(logn)
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left;        
+    }
+}
+
+
+
